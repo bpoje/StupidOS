@@ -14,12 +14,12 @@ sudo docker run -i -t xenos1984/cross-i686-pc-elf /bin/bash
 root@a0155f986599:/#
 	git clone https://github.com/bpoje/stupidOS.git
 	cd stupidOS/
-    i686-pc-elf-as boot.s -o boot.o
+	i686-pc-elf-as boot.s -o boot.o
 	i686-pc-elf-gcc -c kernel.c -o kernel.o -std=gnu99 -ffreestanding -O2 -Wall -Wextra
 	i686-pc-elf-gcc -T linker.ld -o stupidOS.bin -ffreestanding -O2 -nostdlib boot.o kernel.o -lgcc
 	
-	sudo apt-get update
-	sudo apt-get install qemu-system-i386
+	apt-get update
+	apt-get install qemu-system-i386
 	qemu-system-x86_64 -kernel stupidOS.bin -curses
 	Press: alt + 2
 	Press: q
